@@ -6,7 +6,10 @@ import localeEs from '@angular/common/locales/es';
 import localeEn from '@angular/common/locales/en';
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
+import { Locale } from './services/locale';
 
+registerLocaleData(localeFr);
+registerLocaleData(localeEn);
 registerLocaleData(localeEs);
 
 export const appConfig: ApplicationConfig = {
@@ -15,7 +18,9 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     {
       provide: LOCALE_ID,
-      useValue: 'es'
+      //useValue: 'es'
+      deps: [Locale],
+      useFactory: (locale: Locale) => locale.getLocale,
     }
   ]
 };
