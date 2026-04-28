@@ -6,6 +6,8 @@ import { HeroColorPipe } from '../../pipes/hero-color-pipe';
 import { HeroTextColorPipe } from '../../pipes/hero-text-color-pipe';
 import { TitleCasePipe } from '@angular/common';
 import { HeroCreatorPipe } from '../../pipes/hero-creator-pipe';
+import { HeroSortByPipe } from '../../pipes/hero-sort-by-pipe';
+import { Hero } from '../../interfaces/hero';
 
 @Component({
   selector: 'app-custom-page',
@@ -16,7 +18,8 @@ import { HeroCreatorPipe } from '../../pipes/hero-creator-pipe';
     HeroTextColorPipe,
     TitleCasePipe,
     HeroCreatorPipe,
-    HeroColorPipe
+    HeroColorPipe,
+    HeroSortByPipe
   ],
   templateUrl: './custom-page.html',
   styleUrl: './custom-page.css',
@@ -25,4 +28,5 @@ export default class CustomPage {
   name = signal('Engelber Amaya');
   upperCase = signal(true);
   heroes = signal(heroes);
+  sortBy = signal<keyof Hero | null>(null);
 }

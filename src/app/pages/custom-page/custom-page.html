@@ -18,23 +18,25 @@
 <div class="divider"></div>
 
 <section>
-  <h1 class="text-2xl font-bold">Pipes personalizados en acción</h1>
+  <h1 class="text-2xl font-bold">
+    Filtrando por: yyy ordenado por: {{ sortBy() }}
+  </h1>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:justify-end gap-2 w-full mb-5">
 
-    <button class="btn btn-primary w-full lg:w-auto">
+    <button (click)="sortBy.set('name')" class="btn btn-primary w-full lg:w-auto">
       Por nombre
     </button>
 
-    <button class="btn btn-accent w-full lg:w-auto">
+    <button (click)="sortBy.set('color')" class="btn btn-accent w-full lg:w-auto">
       Por color
     </button>
 
-    <button class="btn btn-secondary w-full lg:w-auto">
+    <button (click)="sortBy.set('canFly')" class="btn btn-secondary w-full lg:w-auto">
       Por poder volar
     </button>
 
-    <button class="btn btn-info w-full lg:w-auto">
+    <button (click)="sortBy.set('creator')" class="btn btn-info w-full lg:w-auto">
       Por creador
     </button>
 
@@ -54,7 +56,7 @@
       </tr>
     </thead>
     <tbody class="text-center mb-4">
-      @for (hero of heroes(); track hero.id; let i = $index) {
+      @for (hero of heroes() | heroSortBy:sortBy(); track hero.id; let i = $index) {
         <tr>
           <th>{{ i + 1 }}</th>
           <td>{{ hero.name }}</td>
