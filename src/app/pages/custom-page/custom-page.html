@@ -14,3 +14,56 @@
     </button>
   </div>
 </div>
+
+<div class="divider"></div>
+
+<section>
+  <h1 class="text-2xl font-bold">Pipes personalizados en acción</h1>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:justify-end gap-2 w-full mb-5">
+
+    <button class="btn btn-primary w-full lg:w-auto">
+      Por nombre
+    </button>
+
+    <button class="btn btn-accent w-full lg:w-auto">
+      Por color
+    </button>
+
+    <button class="btn btn-secondary w-full lg:w-auto">
+      Por poder volar
+    </button>
+
+    <button class="btn btn-info w-full lg:w-auto">
+      Por creador
+    </button>
+
+  </div>
+</section>
+
+<div class="w-full overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+  <table class="table table-sm md:table-md min-w-[640px]">
+    <!-- head -->
+    <thead class="text-center">
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Puede volar</th>
+        <th>Color</th>
+        <th>Creador</th>
+      </tr>
+    </thead>
+    <tbody class="text-center mb-4">
+      @for (hero of heroes(); track hero.id; let i = $index) {
+        <tr>
+          <th>{{ i + 1 }}</th>
+          <td>{{ hero.name }}</td>
+          <td>{{ hero.canFly }}</td>
+          <td>{{ hero.color }}</td>
+          <td>{{ hero.creator }}</td>
+        </tr>
+      }
+
+    </tbody>
+  </table>
+</div>
