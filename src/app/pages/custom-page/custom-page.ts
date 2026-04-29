@@ -9,6 +9,7 @@ import { HeroCreatorPipe } from '../../pipes/hero-creator-pipe';
 import { HeroSortByPipe } from '../../pipes/hero-sort-by-pipe';
 import { Hero } from '../../interfaces/hero';
 import { HeroFilterPipe } from '../../pipes/hero-filter-pipe';
+import { TraslationSpanishPipe } from '../../pipes/traslation-spanish-pipe';
 
 @Component({
   selector: 'app-custom-page',
@@ -21,7 +22,8 @@ import { HeroFilterPipe } from '../../pipes/hero-filter-pipe';
     HeroCreatorPipe,
     HeroColorPipe,
     HeroSortByPipe,
-    HeroFilterPipe
+    HeroFilterPipe,
+    TraslationSpanishPipe
   ],
   templateUrl: './custom-page.html',
   styleUrl: './custom-page.css',
