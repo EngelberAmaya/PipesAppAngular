@@ -19,10 +19,18 @@
 
 <section>
   <h1 class="text-2xl font-bold">
-    Filtrando por: yyy ordenado por: {{ sortBy() }}
+    Filtrando por: {{ searchQuery() }}, ordenado por: {{ sortBy() }}
   </h1>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:justify-end gap-2 w-full mb-5">
+
+    <input type="text" placeholder="Buscar heroe"
+      class="input input-bordered w-full max-w-xs"
+      (input)="searchQuery.set(txtInput.value)"
+      #txtInput
+    >
+
+    <div class="flex flex-1 gap-2"></div>
 
     <button (click)="sortBy.set('name')" class="btn btn-primary w-full lg:w-auto">
       Por nombre
@@ -56,7 +64,7 @@
       </tr>
     </thead>
     <tbody class="text-center mb-4">
-      @for (hero of heroes() | heroSortBy:sortBy(); track hero.id; let i = $index) {
+      @for (hero of heroes() | heroFilter:searchQuery() | heroSortBy:sortBy(); track hero.id; let i = $index) {
         <tr>
           <th>{{ i + 1 }}</th>
           <td>{{ hero.name }}</td>
